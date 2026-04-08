@@ -5,11 +5,14 @@ import { FaUtensils } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import { FaPen } from "react-icons/fa";
 import OwnerItemCard from './OwnerItemCard';
+import { ClipLoader } from "react-spinners"
 
 function OwnerDashboard() {
   const { myShopData } = useSelector(state => state.owner)
   const navigate = useNavigate()
-
+  if (myShopData == undefined) {
+    return <div className="mt-20 text-center text-red-700"><ClipLoader size={80} color='white'/></div>
+  }
 
   return (
     <div className='w-full min-h-screen bg-[#fff9f6] flex flex-col items-center'>
